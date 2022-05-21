@@ -1,0 +1,3 @@
+[submodule "python/dfinder_py"]
+	path = python/dfinder_py
+	url = https://github.com/dxyinme/dfinder_py.git

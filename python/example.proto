@@ -1,0 +1,15 @@
+syntax="proto3";
+
+message AddReq {
+  int32 a = 1;
+  int32 b = 2;
+}
+
+message AddRsp {
+  int32 res = 1;
+  string server_message = 2;
+}
+
+service ExampleService {
+  rpc Add(AddReq) returns (AddRsp);
+}
