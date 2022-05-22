@@ -16,13 +16,14 @@ from dfinder_py.discover.etcd_conf import EtcdConf
 parser = argparse.ArgumentParser()
 parser.add_argument("--etcd_host", type=str, default="127.0.0.1", help="etcd_host (default=127.0.0.1)", required=False)
 parser.add_argument("--etcd_port", type=str, default="2379", help="etcd_port (default=2379)", required=False)
+parser.add_argument("--svr", type=str, default="add_server", help="call svrname", required=False)
 args = parser.parse_args()
 
 
 if __name__ == '__main__':
   dco = Discover("dev", EtcdConf(host = args.etcd_host, port = args.etcd_port))
   while True:
-    addr = dco.GetRandomAddr("add_server")
+    addr = dco.GetRandomAddr(args.svr)
     print(addr)
     c = grpc.insecure_channel(addr)
     stub = example_pb2_grpc.ExampleServiceStub(c)
